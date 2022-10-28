@@ -9,9 +9,8 @@ async function getCourse(number, method = "2", week = "0", colorSChema = "defaul
   try {
     await page.goto('http://jwzx.cqupt.edu.cn/kebiao/kb_stu.php?xh=' + number);
   } catch (error) {
-    console.log("ERROR:教务在线挂掉啦,呜呜呜")
     browser.close()
-    return
+    throw "ERROR:教务在线挂掉啦,呜呜呜"
   }
   if (method === "1") {
     let CourseData = {};
@@ -86,7 +85,7 @@ async function getCourse(number, method = "2", week = "0", colorSChema = "defaul
         }
       }
     }
-    fs.writeFileSync("./courseData/"+"number"+".txt",JSON.stringify(CourseData))
+    fs.writeFileSync("./courseData/"+number+".txt",JSON.stringify(CourseData))
     getPng(number,browser)
     browser.close()
     return CourseData
@@ -99,7 +98,7 @@ async function getCourse(number, method = "2", week = "0", colorSChema = "defaul
     })
   } else {
     browser.close()
-    return "ERROR:错误的选项哟"
+    throw "ERROR:错误的选项哟"
   }
   browser.close()
 }

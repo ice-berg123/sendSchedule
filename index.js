@@ -2,23 +2,49 @@ const { createClient,segment } = require("oicq")
 const ordeCli = require("./qqRobot/ordeCli")
 const getData = require("./getData")
 const fs = require("fs")
+const puppeteer = require('puppeteer');
+const { get } = require("http")
+const { getPng } = require("./getPng")
 const client = createClient(489567802)
+let message = []
+let orderOption
 client.on("system.online", () => console.log("Logged in!"))
 client.on("message", e => {
   (async ()=>{
-    let orderOption =  ordeCli.robotCli(e.toString())
-    console.log(orderOption)
-    if(orderOption.method == 1){ 
+    try {
+      orderOption =  await ordeCli.robotCli(e.toString())
+    } catch (error) {
+      e.reply(error)
+      return
+    }
+    if(orderOption.method === "1"){ 
       try {
         let res = fs.statSync("./courseData/"+orderOption.number+".txt")
+        const browser = await puppeteer.launch();
+        await getPng(orderOption.number,browser)
       } catch (error) {
-        getData.getCourse(orderOption.number,orderOption.method,orderOption.week)
+        try {
+          await getData.getCourse(orderOption.number,orderOption.method,orderOption.week)
+        } catch (error) {
+          e.reply(error)
+          return
+        }
       }
     }else{
-      getData.getCourse(orderOption.number,orderOption.method,orderOption.week)
+      try {
+        await getData.getCourse(orderOption.number,orderOption.method,orderOption.week)
+      } catch (error) {
+        e.reply(error)
+      }
     }
-    const message =[segment.image("./img/"+orderOption.number+".png")]
-    e.reply("hello world") 
+    try{
+      console.log("./img/"+orderOption.number+".png")
+      let res = fs.statSync("./img/"+orderOption.number+".png")
+      message =[segment.image("./img/"+orderOption.number+".png")]
+    }catch(error){
+      e.reply("呜呜呜呜，没有找到课表捏")
+    }
+    e.reply(message) 
   })()
 })
 

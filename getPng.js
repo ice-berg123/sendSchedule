@@ -7,7 +7,8 @@ async function getPng(number,browser){
         console.log("服务器出错啦呜呜呜")
     }
     await page.waitForSelector("body")
-    await page.screenshot({
+    let body = await page.$('body')
+    await body.screenshot({
         path: "./img/"+number+".png",
         fullPage: true
       })
