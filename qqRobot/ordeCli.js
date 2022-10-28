@@ -29,7 +29,7 @@ function robotCli(data) {
                     orderOption.defaultStyle = orderOption.week = order[order.indexOf("-defaultStyle") + 1]
                 }
             } else {
-                throw "invalid choice"
+                throw "invalid choice \nexample:\nshow -number 学号 -jwzx -week n \n/将发送教务在线上第n周的课表/\nshow -number 学号 -table\n/发送本周课表/"
             }
             if(orderOption.number === 0){
                 throw "是使用因为里面的-噢"
