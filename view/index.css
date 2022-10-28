@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+div{
+    box-sizing:border-box;
+    text-align: center;
+}
+.dayHead{
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#bigBox{
+    background-color: antiquewhite;
+    width: 600px;
+    height: 920px;
+    border: 10px solid transparent;
+    border-radius: 20px;
+}
+#timeBigBox span{
+    display: block;
+    font-size: 8px;
+    color: rgb(165, 165, 165);
+}
+.lesson{
+    position: relative;
+}
+.lessonItem{
+    height: 20px;
+    color: rgb(63, 62, 62);
+    font-size: 15px;
+}
+#leftBox{
+    display: flex;
+    flex-direction: column;
+
+    width: 60px;
+    height: inherit;
+}
+#timeBigBox{
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#monthBox{
+    font-size: 15px;
+    height: 50px;
+    line-height: 40px;
+}
+#top{
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+}
+#rightBox{
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+
+}
+#rightBox span{
+    display: block;
+    
+}
+.dayBigBox{
+    width: 70px;
+}
+.weekDay{
+    font-size: 15px;
+}
+.wDay{
+    font-size: 10px;
+    margin-top: 4px;
+    color: rgb(131, 130, 130);
+}
+#center{
+    display: flex;
+}
+
+.classItem{
+    position: relative;
+    height: 800px;
+}
+.courseItem{
+    position:absolute;
+    width: 70px;
+    display: flex;
+    top:0px;
+    left:0px;
+    background-color: beige;
+    border: 1px;
+    border-color: aqua;
+    text-align: center;
+    line-height: 100%;
+    border: 2px solid white;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.courseItemSpan{
+    font-size: 12px;
+    color: black;
+}
