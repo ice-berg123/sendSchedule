@@ -8,7 +8,8 @@ app.use(cors());
 app.use(express.static("../view"))
 app.get("/getCourseData",function(req,res){
     let number = req.query.number
-    let courseData = JSON.parse(fs.readFileSync("../courseData/"+number+".txt").toString())
+    
+    let courseData = JSON.parse(fs.readFileSync("../courseData/"+String(number)+".txt").toString())
     res.send(courseData)
 })
 app.listen(3000,()=>{

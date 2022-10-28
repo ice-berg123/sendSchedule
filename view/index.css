@@ -16,7 +16,6 @@ div {
 }
 
 #bigBox {
-    background-color: antiquewhite;
     width: 600px;
     height: 920px;
     border: 10px solid transparent;
@@ -108,12 +107,11 @@ div {
     display: flex;
     top: 0px;
     left: 0px;
-    background-color: beige;
+    background-color: rgb(149, 223, 252);
     border: 1px;
-    border-color: aqua;
     text-align: center;
     line-height: 100%;
-    border: 2px solid white;
+    border: 1px solid white;
     border-radius: 10px;
     flex-direction: column;
     justify-content: space-between;
@@ -123,5 +121,5 @@ div {
 
 .courseItemSpan {
     font-size: 12px;
-    color: black;
+    color: rgb(2, 71, 134);
 }
