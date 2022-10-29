@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const weekstn = require("./tools");
 const { getPng } = require('./getPng');
-async function getCourse(number, method = "2", week = "0", colorSChema = "default", colorJson = "defaule") {
+async function getCourse(number,style="1", method = "2", week = "0", colorSChema = "default", colorJson = "defaule") {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   try {
@@ -86,7 +86,7 @@ async function getCourse(number, method = "2", week = "0", colorSChema = "defaul
       }
     }
     fs.writeFileSync("./courseData/"+number+".txt",JSON.stringify(CourseData))
-    getPng(number,browser)
+    getPng(number,style,browser)
     browser.close()
     return CourseData
   } else if (method === "2") {

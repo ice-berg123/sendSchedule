@@ -9,7 +9,7 @@ function robotCli(data) {
                 number: 0,
                 method: "2",
                 week: "0",
-                defaultStyle: "0"
+                style: "1"
             }
             order = orderDeal(data)
             if (order[0] === "show") {
@@ -25,8 +25,8 @@ function robotCli(data) {
                 if (order.includes("-table")) {
                     orderOption.method = "1"
                 }
-                if (order.includes("-defaultStyle")) {
-                    orderOption.defaultStyle = orderOption.week = order[order.indexOf("-defaultStyle") + 1]
+                if (order.includes("-style")) {
+                    orderOption.style = orderOption.week = order[order.indexOf("-style") + 1]
                 }
             } else {
                 throw "invalid choice \nexample:\nshow -number 学号 -jwzx -week n \n/将发送教务在线上第n周的课表/\nshow -number 学号 -table\n/发送本周课表/"

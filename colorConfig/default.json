@@ -1,0 +1,52 @@
+{
+    "schema":[
+        {
+            ".courseItem":{
+                "color":"",
+                "background-color":"",
+                "border":"",
+                "borderRadius":""
+            },
+            ".dayHead":{
+                "color":"",
+                "background-color":"",
+                "border":"",
+                "border-radius":""
+            },
+            ".lesson":{
+                "color":"",
+                "background-color":"",
+                "border":"",
+                "border-radius":""
+            },
+            ".lesson span":{
+                "color":""
+            },
+            ".lesson lessonItem":{
+                "color":""
+            },
+            "#timeBigBox":{
+                "background-color":""
+            },
+            "#leftBox":{
+                "background-color":""
+            },
+            "#monthBox":{
+                "background-color":"",
+                "color":""
+            },
+            "#weekNum":{
+                "color":""
+            },
+            "#top":{
+                "background-color":""
+            },
+            "#bigBox":{
+                "background-color":""
+            }
+        },
+        {
+
+        }
+    ]
+}

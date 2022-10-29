@@ -21,10 +21,10 @@ client.on("message", e => {
       try {
         let res = fs.statSync("./courseData/"+orderOption.number+".txt")
         const browser = await puppeteer.launch();
-        await getPng(orderOption.number,browser)
+        await getPng(orderOption.number,orderOption.style,browser)
       } catch (error) {
         try {
-          await getData.getCourse(orderOption.number,orderOption.method,orderOption.week)
+          await getData.getCourse(orderOption.number,orderOption.style,orderOption.method,orderOption.week)
         } catch (error) {
           e.reply(error)
           return
@@ -32,7 +32,7 @@ client.on("message", e => {
       }
     }else{
       try {
-        await getData.getCourse(orderOption.number,orderOption.method,orderOption.week)
+        await getData.getCourse(orderOption.number,orderOption.style,orderOption.method,orderOption.week)
       } catch (error) {
         e.reply(error)
       }

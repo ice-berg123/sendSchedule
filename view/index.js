@@ -28,7 +28,6 @@ function renderCourse(data, week) {
         for (let j = 0; j < data[i].length; j++) {
             for (let k = 0; k < data[i][j].length; k++) {
                 let tempdata = data[i][j][k]
-                console.log(tempdata, tempdata.regCourseWhen.includes(week), week);
                 if (tempdata.regCourseWhen.includes(week)) {
                     let tempClassItem = document.createElement("div")
                     tempClassItem.classList.add("courseItem")
@@ -48,6 +47,7 @@ function renderCourse(data, week) {
         }
     }
 }
+
 function getHeightN(data) {
     if (data == "4节连上") {
         return 4;
