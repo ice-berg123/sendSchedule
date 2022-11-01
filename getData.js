@@ -9,22 +9,16 @@ async function getCourse(number, style = "1", method = "2", week = "0", colorSCh
     let courseData = fs.readFileSync("./courseData/" + number + ".txt")
     courseData = JSON.parse(courseData)
     if (courseData.week === week && method === "1") {
-      getPng(number, style)
+      await getPng(number, style)
     } else {
       const browser = await puppeteer.launch()
       const page = await browser.newPage();
       try {
         const targetUrl = 'http://jwzx.cqupt.edu.cn/kebiao/kb_stu.php?xh=' + number
-        let cookieData = getCookie()
-        if (cookieData) {
-          cookieData = JSON.parse(cookieData)
-          await page.setCookie(...cookieData)
-        }
         await page.goto(targetUrl)
+        await page.waitForNavigation();
         console.log(page.url())
         if (page.url() != targetUrl) {
-          console.log(page.url())
-          await page.waitForNavigation();
           await page.waitForSelector("#username")
           await page.evaluate(() => {
             document.querySelector("#username").value = "1669570"
@@ -33,8 +27,6 @@ async function getCourse(number, style = "1", method = "2", week = "0", colorSCh
             document.querySelector("#login_submit").click()
           })
           await page.waitForNavigation();
-          let cookieData = await page.cookies()
-          fs.writeFileSync("./CookieData/cookie.json", JSON.stringify(cookieData))
         }
       } catch (error) {
         browser.close()

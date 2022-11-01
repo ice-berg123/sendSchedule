@@ -17,22 +17,21 @@ client.on("message", e => {
       e.reply(error)
       return
     }
-    if(orderOption.method === "1"){ 
+    // if(orderOption.method === "1"){ 
         try {
           await getData.getCourse(orderOption.number,orderOption.style,orderOption.method,orderOption.week)
         } catch (error) {
           e.reply(error)
           return
         }
-    }else{
-      try {
-        await getData.getCourse(orderOption.number,orderOption.style,orderOption.method,orderOption.week)
-      } catch (error) {
-        e.reply(error)
-      }
-    }
+    // }else{
+    //   try {
+    //     await getData.getCourse(orderOption.number,orderOption.style,orderOption.method,orderOption.week)
+    //   } catch (error) {
+    //     e.reply(error)
+    //   }
+    // }
     try{
-      console.log("./img/"+orderOption.number+".png")
       let res = fs.statSync("./img/"+orderOption.number+".png")
       message =[segment.image("./img/"+orderOption.number+".png")]
     }catch(error){
