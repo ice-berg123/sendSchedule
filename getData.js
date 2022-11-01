@@ -7,7 +7,19 @@ async function getCourse(number,style="1", method = "2", week = "0", colorSChema
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   try {
-    await page.goto('http://jwzx.cqupt.edu.cn/kebiao/kb_stu.php?xh=' + number);
+    const targetUrl = 'http://jwzx.cqupt.edu.cn/kebiao/kb_stu.php?xh=' + number
+    await page.goto(targetUrl)
+    if(page.url != targetUrl){
+        await page.waitForNavigation();
+        await page.waitForSelector("#username")
+        await page.evaluate(()=>{
+            document.querySelector("#username").value = "1669570"
+            document.querySelector("#password").value = "Qaz!359893623"
+            document.querySelector("#rememberMe").click()
+            document.querySelector("#login_submit").click()
+        })
+        await page.waitForNavigation();
+    }
   } catch (error) {
     browser.close()
     throw "ERROR:教务在线挂掉啦,呜呜呜"
