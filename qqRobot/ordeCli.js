@@ -1,5 +1,5 @@
 function orderDeal(str) {
-    return str.split(" ")
+    return str.split(" ").filter(item => item)
 }
 function robotCli(data) {
     return new Promise(
@@ -26,13 +26,13 @@ function robotCli(data) {
                     orderOption.method = "1"
                 }
                 if (order.includes("-style")) {
-                    orderOption.style = orderOption.week = order[order.indexOf("-style") + 1]
+                    orderOption.style = order[order.indexOf("-style") + 1]
                 }
             } else {
                 throw "invalid choice \nexample:\nshow -number 学号 -jwzx -week n \n/将发送教务在线上第n周的课表/\nshow -number 学号 -table\n/发送本周课表/"
             }
             if(orderOption.number === 0){
-                throw "是使用因为里面的-噢"
+                throw "请使用'-number [学号] '输入您的学号噢"
             }
             resolve(orderOption)
         }

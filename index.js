@@ -18,18 +18,12 @@ client.on("message", e => {
       return
     }
     if(orderOption.method === "1"){ 
-      try {
-        let res = fs.statSync("./courseData/"+orderOption.number+".txt")
-        const browser = await puppeteer.launch();
-        await getPng(orderOption.number,orderOption.style,browser)
-      } catch (error) {
         try {
           await getData.getCourse(orderOption.number,orderOption.style,orderOption.method,orderOption.week)
         } catch (error) {
           e.reply(error)
           return
         }
-      }
     }else{
       try {
         await getData.getCourse(orderOption.number,orderOption.style,orderOption.method,orderOption.week)
